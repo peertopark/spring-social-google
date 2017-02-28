@@ -7,14 +7,17 @@ buildscript {
     
     dependencies {
         classpath 'org.springframework.build.gradle:propdeps-plugin:0.0.7'
+        classpath "io.codearte.gradle.nexus:gradle-nexus-staging-plugin:0.5.3"
     }
 }
+
+apply plugin: 'io.codearte.nexus-staging'
 
 description = 'Spring Social Google Root Project'
 
 allprojects {
     
-    group = "org.springframework.social"
+    group = "com.peertopark.spring.social"
     version = "2.0.0.SNAPSHOT"
 
     apply plugin: 'eclipse'
@@ -65,11 +68,7 @@ allprojects {
     eclipse.classpath.file.whenMerged { classpath ->
         classpath.entries.findAll { entry -> entry.path.contains('servlet-api') }*.exported = false
     }
-    
-//    signing {
-//        sign configurations.archives
-//    }
-    
+
 }
 
 
@@ -100,6 +99,10 @@ configure(subprojects) { subproject ->
     artifacts {
         archives sourcesJar
         archives javadocJar
+    }
+    
+    signing {
+        sign configurations.archives
     }
 
 }
