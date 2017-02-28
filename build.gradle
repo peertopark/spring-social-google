@@ -18,7 +18,7 @@ description = 'Spring Social Google Root Project'
 allprojects {
     
     group = "com.peertopark.spring.social"
-    version = "2.0.0.SNAPSHOT"
+    version = "2.0.0.RELEASE"
 
     apply plugin: 'eclipse'
     apply plugin: 'idea'
